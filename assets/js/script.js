@@ -44,7 +44,7 @@ if (!dayInfoString){
 
         var hourEl = $('<div>');
         hourEl.attr('data-hour', i);
-        hourEl.addClass('d-flex flex-row justify-content-between row');
+        hourEl.addClass('d-flex flex-row justify-content-between row hour ');
 
         var timeString = "";
 
@@ -57,29 +57,34 @@ if (!dayInfoString){
         }
 
         var titleEl = $('<h2>' + timeString + '</h2>');
-        titleEl.addClass('col-2 col-md-1 d-flex justify-content-center align-items-center');
+        titleEl.addClass('col-2 col-md-1 d-flex justify-content-center align-items-center my-1');
         hourEl.append(titleEl);
 
         var inputEl = $('<input type="text"></input>');
-        inputEl.addClass('col-8 col-md-10');
+        inputEl.addClass('col-8 col-md-10 description my-1');
         hourEl.append(inputEl);
 
-        var saveBtn = $('<button>Save</button>');
-        saveBtn.addClass('col-2 col-md-1');
+        var saveBtn = $('<button class="saveBtn">Save</button>');
+        saveBtn.addClass('col-2 col-md-1 my-1');
         hourEl.append(saveBtn);
 
         containerEl.append(hourEl);
-        if (now.hour() - i > 0) {
-            hourEl.css('background-color', 'red');
-            saveBtn.css('background-color', 'red');
-        } else if (now.hour() - i < 0) {
+        if (test.hour() - i > 0) {
+            titleEl.addClass('past');
+            saveBtn.css('background-color', '#d3d3d3');
+            inputEl.addClass('past');
+
+        } else if (test.hour() - i < 0) {
             3
-            hourEl.css('background-color', 'green');
-            saveBtn.css('background-color', 'green');
+            titleEl.addClass('future');
+            saveBtn.css('background-color', '#77dd77');
+            inputEl.addClass('future');
 
         } else {
-            hourEl.css('background-color', 'yellow');
-            saveBtn.css('background-color', 'yellow');
-        }
+            titleEl.addClass('present');
+            saveBtn.css('background-color', '#f3f788');
+            //added for visibility
+            saveBtn.css('color', 'black');
+            inputEl.addClass('present');
     }
-})
+}})

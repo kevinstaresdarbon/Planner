@@ -1,16 +1,43 @@
+$(function () {
+
 // bring in the advancedFormat plugin 
 dayjs.extend(window.dayjs_plugin_advancedFormat)
 
 var dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-$(function () {
-   //initilaise needed references and vars
+//initilaise needed references and vars
 
-    var containerEl = $('#container');
-    var dateEl = $('#currentDay');
-    var now = dayjs();
-    var test = dayjs().hour(12);
+var containerEl = $('#container');
+var dateEl = $('#currentDay');
+var now = dayjs();
+var test = dayjs().hour(12);
+var dayInfoString = localStorage.getItem("dayInfo");
+var dayInfo = {};
+
+
+function initDayInfo(){
+    newDayInfo = {date: now.format("YY MM DD"), infoArr:[[9,""],[10,""],[11,""],[12,""],[13,""],[14,""],[15,""],[16,""],[17,""]]};
+    return newDayInfo;
+}
+
+    // no object currently saved to local storage so initialise it
+if (!dayInfoString){
+        dayInfo = initDayInfo();
+        dayInfoString = JSON.stringify(dayInfo);
+        localStorage.setItem("dayInfo", dayInfoString);
+    } else {
+
+        dayInfo = JSON.parse(dayInfoString);
+
+        // old info, discard for security purposes {don't want to create a log of the planner in local storage}
+        if (dayInfo.date !== dayjs().format("YY MM DD")){
+            dayInfo = initDayInfo();
+            dayInfoString = JSON.stringify(dayInfo);
+            localStorage.setItem("dayInfo", dayInfoString);
+        };
+    };
     
+
     dateEl.text("Today is " + dayArray[now.day()] + now.format(" [the] Do [of] MMMM, YYYY"));
 
     for (let i = 9; i < 18; i++) {

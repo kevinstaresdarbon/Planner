@@ -1,8 +1,18 @@
-$(function () {
-    containerEl = $('#container');
+// bring in the advancedFormat plugin 
+dayjs.extend(window.dayjs_plugin_advancedFormat)
 
+var dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+$(function () {
+   //initilaise needed references and vars
+
+    var containerEl = $('#container');
+    var dateEl = $('#currentDay');
     var now = dayjs();
     var test = dayjs().hour(12);
+    
+    dateEl.text("Today is " + dayArray[now.day()] + now.format(" [the] Do [of] MMMM, YYYY"));
+
     for (let i = 9; i < 18; i++) {
 
         var hourEl = $('<div>');

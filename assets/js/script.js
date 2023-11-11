@@ -72,7 +72,9 @@ if (!dayInfoString){
         if (test.hour() - i > 0) {
             titleEl.addClass('past');
             saveBtn.css('background-color', '#d3d3d3');
+            saveBtn.prop('disabled', true);
             inputEl.addClass('past');
+            inputEl.prop('disabled', true);
 
         } else if (test.hour() - i < 0) {
             3

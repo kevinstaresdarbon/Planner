@@ -73,3 +73,12 @@ header {
   transition: all 0.3s ease-in-out;
 }
 
+input[disabled]{
+  opacity:0.75;
+  pointer-events:none;
+}
+
+button[disabled]{
+  opacity:0.75;
+  pointer-events:none;
+}

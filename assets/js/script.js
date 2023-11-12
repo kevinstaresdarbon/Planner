@@ -101,17 +101,16 @@ $(function () {
         hourEl.append(titleEl);
         hourEl.append(inputEl);
         hourEl.append(saveBtn);
-      
-        
+    
 
-        if (test.hour() - i > 0) {
+        if (now.hour() - i > 0) {
             titleEl.addClass('past');
             saveBtn.css('background-color', '#d3d3d3');
             saveBtn.prop('disabled', true);
             inputEl.addClass('past');
             inputEl.prop('disabled', true);
 
-        } else if (test.hour() - i < 0) {
+        } else if (now.hour() - i < 0) {
             3
             titleEl.addClass('future');
             saveBtn.css('background-color', '#77dd77');

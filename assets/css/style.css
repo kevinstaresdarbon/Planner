@@ -52,11 +52,15 @@ header {
 .present {
   background-color: #f3f788;
   color: black;
+  font-size: 16px;
+  transition: all 0.4s ease-in-out;
 }
 
 .future {
   background-color: #77dd77;
   color: black;
+  font-size: 16px;
+  transition: all 0.4s ease-in-out;
 }
 
 .saveBtn {
@@ -81,4 +85,13 @@ input[disabled]{
 button[disabled]{
   opacity:0.75;
   pointer-events:none;
+}
+
+.bold{
+  font-weight: 1000;
+}
+
+.swell{
+  font-size: 24px;
+  transition: all 0.4s ease-in-out;
 }

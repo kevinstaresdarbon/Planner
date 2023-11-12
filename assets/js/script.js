@@ -10,7 +10,7 @@ $(function () {
     var containerEl = $('#container');
     var dateEl = $('#currentDay');
     var now = dayjs();
-    var test = dayjs().hour(14);
+    var test = dayjs().hour(13);
     var dayInfoString = localStorage.getItem("dayInfo");
     var dayInfo = {};
 
@@ -24,6 +24,14 @@ $(function () {
             dayInfo.info[hourBlock] = clickedEl.parent().children('input').val(); 
             //return to local storage           ;
             localStorage.setItem("dayInfo", JSON.stringify(dayInfo));
+
+            //create an animated effect to visually show the element info has been saved
+            clickedEl.parent().children('input').addClass('swell');
+
+            setTimeout(() => {
+                clickedEl.parent().children('input').addClass('bold');
+                clickedEl.parent().children('input').removeClass('swell');
+            }, 500)
         }
     }
 
@@ -76,7 +84,11 @@ $(function () {
         var inputEl = $('<input type="text"></input>');
         inputEl.addClass('col-8 col-md-10 description my-1');
         //retrieve the stored values from the object
-        inputEl.val(dayInfo.info[i]);
+        if(dayInfo.info[i] !== ""){
+            inputEl.val(dayInfo.info[i]);
+
+        }
+        
 
 
         var saveBtn = $('<button class="saveBtn">Save</button>');

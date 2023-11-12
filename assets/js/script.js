@@ -26,11 +26,15 @@ $(function () {
             localStorage.setItem("dayInfo", JSON.stringify(dayInfo));
 
             //create an animated effect to visually show the element info has been saved
+
             clickedEl.parent().children('input').addClass('swell');
+            clickedEl.parent().children('input').removeClass('norm');
 
             setTimeout(() => {
                 clickedEl.parent().children('input').addClass('bold');
                 clickedEl.parent().children('input').removeClass('swell');
+                clickedEl.parent().children('input').addClass('norm');
+
             }, 500)
         }
     }
@@ -86,7 +90,7 @@ $(function () {
         //retrieve the stored values from the object
         if(dayInfo.info[i] !== ""){
             inputEl.val(dayInfo.info[i]);
-
+            inputEl.addClass('bold');
         }
         
 
@@ -100,14 +104,14 @@ $(function () {
       
         
 
-        if (now.hour() - i > 0) {
+        if (test.hour() - i > 0) {
             titleEl.addClass('past');
             saveBtn.css('background-color', '#d3d3d3');
             saveBtn.prop('disabled', true);
             inputEl.addClass('past');
             inputEl.prop('disabled', true);
 
-        } else if (now.hour() - i < 0) {
+        } else if (test.hour() - i < 0) {
             3
             titleEl.addClass('future');
             saveBtn.css('background-color', '#77dd77');

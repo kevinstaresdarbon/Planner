@@ -52,15 +52,11 @@ header {
 .present {
   background-color: #f3f788;
   color: black;
-  font-size: 16px;
-  transition: all 0.4s ease-in-out;
 }
 
 .future {
   background-color: #77dd77;
   color: black;
-  font-size: 16px;
-  transition: all 0.4s ease-in-out;
 }
 
 .saveBtn {
@@ -93,5 +89,10 @@ button[disabled]{
 
 .swell{
   font-size: 24px;
+  transition: all 0.4s ease-in-out;
+}
+
+.norm{
+  font-size: 16px;
   transition: all 0.4s ease-in-out;
 }
